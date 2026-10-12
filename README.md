@@ -56,7 +56,8 @@ Create a `.env` file in the project root:
 ```bash
 GROQ_API_KEY=your_groq_api_key
 TAVILY_API_KEY=your_tavily_api_key
-POSTGRES_URI=postgresql://user:password@localhost:5432/travelmate
+AVIATIONSTACK_API_KEY=your_aviationstack_api_key
+DATABASE_URL=postgresql://user:password@localhost:5432/travelmate
 ```
 
 `.env` is gitignored — never commit your keys.
@@ -76,10 +77,8 @@ The checkpointer creates its own tables on first run via `PostgresSaver.setup()`
 
 ### 6. Run the app
 
-> **Note:** the application code isn't in the repo yet. Once the FastAPI entrypoint exists, start it with:
-
 ```bash
-uvicorn app.main:app --reload --port 8000
+uvicorn app:app --reload --port 8000
 ```
 
 Then open http://localhost:8000
