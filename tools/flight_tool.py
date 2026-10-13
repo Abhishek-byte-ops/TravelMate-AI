@@ -347,9 +347,6 @@ def parse_route(query: str):
         "worldwide flights",
     ]
 
-    if any(keyword in q_lower for keyword in global_keywords):
-        return None, None
-
     # Direct IATA code route: DAC to NRT
     codes = re.findall(r"\b[A-Z]{3}\b", q)
 
@@ -415,6 +412,11 @@ def parse_route(query: str):
     if len(mentions) == 1:
         arr_iata = resolve_location_to_iata(mentions[0])
         return DEFAULT_ORIGIN_IATA, arr_iata
+
+    # Checked last, not first: a query naming a route keeps that route even
+    # when it also says "all flights".
+    if any(keyword in q_lower for keyword in global_keywords):
+        return None, None
 
     return None, None
 

@@ -4,29 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TravelMate AI</title>
-  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/style.css?v={{ v }}">
   <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
 </head>
 <body>
   <header class="topbar">
-    <h1>TravelMate&nbsp;AI</h1>
-    <button id="reset" type="button" title="Start a new conversation">New trip</button>
+    <div class="brand">
+      <span class="mark" aria-hidden="true">✈️</span>
+      <h1>
+        TravelMate&nbsp;AI
+        <span class="tag">Flights · Hotels · Itineraries</span>
+      </h1>
+    </div>
+
+    <button id="theme" class="icon-btn" type="button" title="Toggle light / dark theme">
+      <span class="glyph" aria-hidden="true">◐</span>
+      <span class="label">Theme</span>
+    </button>
+
+    <button id="reset" class="icon-btn" type="button" title="Start a new conversation">
+      <span class="glyph" aria-hidden="true">✦</span>
+      <span class="label">New trip</span>
+    </button>
   </header>
 
-  <main id="chat" class="chat">
-    <div class="msg assistant">
-      <div class="bubble">
-        <p>Tell me where you want to go and I'll plan it — flights, hotels and a day-by-day itinerary.</p>
-        <p class="hint">Try: <em>Plan a 5 day trip from India to Nepal including flights and hotels</em></p>
-      </div>
-    </div>
-  </main>
+  <main id="chat" class="chat" aria-live="polite"></main>
 
-  <form id="composer" class="composer">
-    <textarea id="input" rows="1" placeholder="Where do you want to go?" autofocus></textarea>
-    <button id="send" type="submit">Send</button>
-  </form>
+  <div class="composer-wrap">
+    <form id="composer" class="composer">
+      <textarea id="input" rows="1"
+                placeholder="Where do you want to go?"
+                autofocus></textarea>
+      <button id="send" class="send" type="submit">
+        <span class="label">Send</span>
+        <span class="glyph" aria-hidden="true">➤</span>
+      </button>
+    </form>
+    <p class="composer-note">
+      Enter to send · Shift+Enter for a new line · plans take 20–70 seconds
+    </p>
+  </div>
 
-  <script src="/static/script.js"></script>
+  <script src="/static/script.js?v={{ v }}"></script>
 </body>
 </html>
